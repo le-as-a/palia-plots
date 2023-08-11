@@ -46,11 +46,13 @@
     flex-direction: row;
     margin-bottom: 1rem;
     border: 2px solid #F7F3CD;
+    border-radius: 15px;
     padding: .5rem;
 }
 
 .crop:hover {
     border: 2px solid #EFD700;
+    border-radius: 15px;
 }
 
 .crop_image {
