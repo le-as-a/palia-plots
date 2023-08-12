@@ -1,4 +1,6 @@
-import './globals.css'
+import './globals.css';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export const metadata = {
   title: 'Palia Plots',
@@ -8,7 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <Provider store={store}>
+        <body>{children}</body>
+      </Provider>
     </html>
   )
 }
