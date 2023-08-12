@@ -9,6 +9,7 @@ export const createPlot = createAsyncThunk(
             [id]: {
                 crop: '',
                 ability: '',
+                image: '',
                 boosts: []
             }
         }
@@ -17,11 +18,12 @@ export const createPlot = createAsyncThunk(
 
 export const updatePlot = createAsyncThunk(
     'plot/UPDATE',
-    async (id, crop, ability, boosts) => {
+    async (id, crop, ability, image, boosts) => {
         return {
             [id]: {
                 crop: crop,
                 ability: ability,
+                image: image,
                 boosts: [...boosts]
             }
         }

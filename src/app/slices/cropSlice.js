@@ -21,5 +21,3 @@ export const cropSlice = createSlice({
           }
     }
 });
-
-export default cropSlice.reducer;

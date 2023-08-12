@@ -1,11 +1,15 @@
 "use client";
 import styles from './page.module.css';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPlot, updatePlot } from './slices/plotSlice';
 
 export default function Home() {
   const [current, setCurrent ] = useState("");
-  const cropInfo = useSelector(state.crops);
+  const cropInfo = useSelector(state => state.crops);
+  const plots = useSelector(state => state.plots);
+  const dispatch = useDispatch();
+  let total = 9;
 
   const onCropClick = crop => {
     setCurrent(crop);
@@ -18,19 +22,21 @@ export default function Home() {
       plot.innerHTML = `${cropInfo[current].image}`;
     }
   }
+  // function renderPlot(i) {
+  //   return (
+  //     <>
+  //       <div className={styles.plot} id={`plot${i+1}`} key={`plot${i+1}`} onClick={onPlotClick(`plot${i+1}`)}>
+  //       </div>
+  //     </>
+  //   )
+  // }
 
-  const plots = [];
-  function renderPlot(i) {
-    return (
-      <>
-        <div className={styles.plot} id={`plot${i+1}`} key={`plot${i+1}`} onClick={onPlotClick(`plot${i+1}`)}>
-        </div>
-      </>
-    )
-  }
+  // for (let i = 0; i < 9; i++) {
+  //   plots.push(renderPlot(i));
+  // }
 
-  for (let i = 0; i < 9; i++) {
-    plots.push(renderPlot(i));
+  for (let i = 0; i < total; i++) {
+    dispatch(createPlot(`plot${i+1}`));
   }
 
   const crops = []
